@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %} My Library {% endblock %}
+
+{% block content %}
+
+<div class="row mb-3 text-center border-bottom border-dark pb-2">
+    <div class="col-3 themed-grid-col fs-4 fw-bold text-secondary-emphasis">Title</div>
+    <div class="col-3 themed-grid-col fs-4 fw-bold text-secondary-emphasis">Author</div>
+    <div class="col-3 themed-grid-col fs-4 fw-bold text-secondary-emphasis">Your Rating</div>
+    <div class="col-3 themed-grid-col"></div>
+</div>
+
+      {% if books==[] %}
+      <p>Library is empty.</p>
+      {% else %}
+      {% for book in books %}
+
+<div class="row mb-3 text-center">
+    <div class="col-3 themed-grid-col">{{book.title}}</div>
+    <div class="col-3 themed-grid-col">{{book.author}}</div>
+    <div class="col-3 themed-grid-col">{{book.rating}}/10</div>
+    <div class="col-3 themed-grid-col"><a class="btn btn-outline-secondary btn-lg px-4" href = "{{url_for('edit', book_id=book.id)}}">Change your rating</a></div>
+</div>
+
+
+      {% endfor %}
+      {% endif %}
+        <a class="btn btn-dark btn-lg px-4 me-sm-3" href ="{{url_for('add')}}">Add New Book</a>
+{% endblock %}

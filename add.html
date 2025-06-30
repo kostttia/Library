@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+    {% block title %}Add Book{% endblock %}
+
+{% block content %}
+
+<form action="" method="POST">
+    <div class="row mb-3 text-center align-items-center border-bottom border-dark pb-2">
+        <div class="col-2 themed-grid-col fs-5 fw-bold text-secondary-emphasis">
+            <label for="bookname">Book Name</label>
+        </div>
+        <div class="col-2">
+            <input type="text" name="bookname" id="bookname" class="form-control">
+        </div>
+
+        <div class="col-2 themed-grid-col fs-5 fw-bold text-secondary-emphasis">
+            <label for="author">Book Author</label>
+        </div>
+        <div class="col-2">
+            <input type="text" name="author" id="author" class="form-control">
+        </div>
+
+        <div class="col-2 themed-grid-col fs-5 fw-bold text-secondary-emphasis">
+            <label for="rating">Rating</label>
+        </div>
+        <div class="col-2">
+            <input type="text" name="rating" id="rating" class="form-control">
+        </div>
+    </div>
+
+    <!-- Centered button below -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6 text-center">
+            <button type="submit" class="btn btn-dark btn-lg px-4 w-100">
+                Start Adding Books
+            </button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

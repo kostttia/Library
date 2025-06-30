@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+<title>Library</title>
+
+{% block title %} My Library {% endblock %}
+
+{% block content %}
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold text-body-emphasis">Your Personal Book Collection,</h1>
+    <h1 class="display-6 fw-semibold" style="font-family: 'Brush Script MT', cursive;">All in One Place</h1>
+
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+            Keep track of the books you love, want to read, or already finished.
+            Add new titles, update ratings, and manage your entire library from a beautiful, user-friendly interface.
+            Whether you're a passionate reader, a student, or just starting your book journey — this app helps you stay organized and inspired.
+            No more lost lists or forgotten favorites — your bookshelf is now just a click away.
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+            <a class="btn btn-dark btn-lg px-4 me-sm-3" href="{{ url_for('add') }}">Start Adding Books</a>
+            <a class="btn btn-outline-secondary btn-lg px-4" href="{{ url_for('library') }}">Explore Your Library</a>
+        </div>
+    </div>
+
+    <div class="overflow-hidden" style="max-height: 30vh;">
+        <div class="container px-5">
+            <img src="../static/books.jpg" class="img-fluid border rounded-3 shadow-lg mb-4" width="700" height="500" loading="lazy">
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <!-- Text Content (left) -->
+        <div class="col-md-9 p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary-emphasis">Your Library</strong>
+            <h3 class="mb-0">Books you have read</h3>
+            <div class="mb-1 text-body-secondary">{{ date }}</div>
+            <p class="card-text mb-auto mb-0">
+                This is an exact number of books you have read.
+            </p>
+            <a href="{{ url_for('library') }}" class="icon-link gap-1 icon-link-hover stretched-link mt-3">
+                Continue developing your character
+                <svg class="bi" aria-hidden="true">
+                    <use xlink:href="{{ url_for('library') }}"></use>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Number (right, but shifted slightly left & made bigger) -->
+        <div class="col-md-3 d-flex align-items-center justify-content-center">
+            <span class="display-1 fw-bold" style="margin-left: -1rem;">{{ num_of_books }}</span>
+        </div>
+    </div>
+</div>
+
+<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" class="active" aria-current="true" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" class="" aria-label="Slide 3"></button>
+    </div>
+
+    <div class="carousel-inner">
+        <div class="carousel-item">
+            <svg aria-hidden="true" class="bd-placeholder-img" height="100%" preserveAspectRatio="xMidYMid slice" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            </svg>
+            <div class="container">
+                <div class="carousel-caption text-start">
+                  <h1>Learn more.</h1>
+                    <p class="opacity-75">
+                      Discover how to manage your personal book collection in one convenient place. Add, edit, and sort your favorite titles with ease.
+                    </p>
+
+                    <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item active">
+            <svg aria-hidden="true" class="bd-placeholder-img" height="100%" preserveAspectRatio="xMidYMid slice" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            </svg>
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Learn more.</h1>
+                        <p class="opacity-75">
+                        Log what you've read and rate each book. Stay motivated as you watch your personal reading journey grow day by day.
+                        </p>
+
+                    <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <svg aria-hidden="true" class="bd-placeholder-img" height="100%" preserveAspectRatio="xMidYMid slice" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            </svg>
+            <div class="container">
+                <div class="carousel-caption text-end">
+                    <h1>One more for good measure.</h1>
+                    <p>Some representative placeholder content for the third slide of this carousel.</p>
+                    <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+{% endblock %}
