@@ -5,11 +5,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Float
-from flask_bootstrap5 import Bootstrap
 from wtforms.validators import DataRequired
 import datetime
-
-from day_60_html_forms.main import about
 
 todays_date = datetime.date.today()
 
@@ -28,12 +25,10 @@ def home():
     num_of_books = len(books)
     return render_template("index.html", date=todays_date, num_of_books=num_of_books)
 
-
 @app.route('/library')
 def library():
     books = db.session.query(Book).all()
     return render_template("library.html", books=books)
-
 
 @app.route("/edit/<int:book_id>", methods=["GET", "POST"])
 def edit(book_id):
@@ -46,7 +41,6 @@ def edit(book_id):
         return redirect(url_for('home'))
 
     return render_template("edit.html", book=book_to_update, form=my_form)
-
 
 @app.route("/add", methods=["GET", "POST"])
 def add():
@@ -74,7 +68,6 @@ def about():
 def contact():
     return render_template("contact.html")
 
-
 class Base(DeclarativeBase):
     pass
 
@@ -91,8 +84,6 @@ class Book(db.Model):
 
 with app.app_context():
     db.create_all()
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
